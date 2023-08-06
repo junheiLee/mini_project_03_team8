@@ -4,7 +4,7 @@
 <%@ include file="/admin/sub_menu.jsp"%>
 <script type="text/javascript">
 	function go_search() {
-		document.frm.action = "NonageServlet?command=admin_member_list";
+		document.frm.action = "${contextPath }/admin/members/memberList";
 		document.frm.submit();
 	}
 </script>
@@ -22,7 +22,7 @@
 		<br>
 		<table id="orderList">
 			<tr>
-				<th>아디디(탈퇴여부)</th>
+				<th>아이디(탈퇴여부)</th>
 				<th>이름</th>
 				<th>이메일</th>
 				<th>우편번호</th>
