@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
-<script>
-	var contextPath = "${pageContext.request.contextPath }";
-</script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +13,9 @@
 <script type="text/javascript" src="${contextPath }/member/member.js"></script>
 <script type="text/javascript" src="${contextPath }/mypage/mypage.js"></script>
 </head>
-
+<script>
+	var contextPath = "${pageContext.request.contextPath }";
+</script>
 <body>
 	<div id="wrap">
 		<!--헤더파일 들어가는 곳 시작 -->
@@ -34,7 +33,7 @@
 						<c:when test="${empty sessionScope.loginUser}">
 							<li><a href="${contextPath }/members/loginForm.do"
 								style="width: 110px;">LOGIN(CUSTOMER</a> <a
-								href="NonageServlet?command=admin_login_form"
+								href="${contextPath }/admin/members/loginForm.do"
 								style="width: 100px;">| ADMIN)</a></li>
 							<li>/</li>
 							<li><a href="${contextPath }/members/contract.do">JOIN</a></li>
@@ -73,3 +72,4 @@
 			<hr>
 		</header>
 		<!--헤더파일 들어가는 곳 끝 -->
+		

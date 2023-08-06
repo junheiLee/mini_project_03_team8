@@ -2,12 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>freeflux Admin</title>
-<link rel="stylesheet" href="admin/css/admin.css">
+<link rel="stylesheet" href="${contextPath }/admin/css/admin.css">
 <script type="text/javascript">
 	function worker_check() {
 		if (document.frm.workId.value == "") {
@@ -26,8 +27,8 @@
 	<div id="wrap">
 		<header>
 			<div id="logo">
-				<a href="admin/main.jsp"> <img src="admin/images/bar_01.gif"
-					style="float: left"> <img src="admin/images/text.gif">
+				<a href="${contextPath }/admin/main.jsp"> <img src="${contextPath }/admin/images/bar_01.gif"
+					style="float: left"> <img src="${contextPath }/admin/images/text.gif">
 				</a>
 			</div>
 		</header>
@@ -35,7 +36,7 @@
 		<article>
 			<div id="loginform">
 				<form name="frm" method="post"
-					action="NonageServlet?command=admin_login">
+					action="${contextPath }/admin/members/login.do">
 					<table>
 						<tr>
 							<td>아 이 디</td>

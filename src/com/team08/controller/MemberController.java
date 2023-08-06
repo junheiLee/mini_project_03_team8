@@ -21,7 +21,7 @@ import com.team08.service.MemberService;
 @WebServlet("/members/*")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	MemberService memberService;
+	private MemberService memberService;
        
     public MemberController() {
     	memberService = new MemberService();
