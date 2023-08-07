@@ -5,14 +5,14 @@
 <script type="text/javascript">
 	function go_list() {
 		var theForm = document.frm;
-		theForm.action = "NonageServlet?command=admin_qna_list";
+		theForm.action = contextPath + "/admin/qnas/qnaList";
 		theForm.submit();
 	}
 
 	function go_rep(qseq) {
 		var theForm = document.frm;
 		theForm.qseq.value = qseq;
-		theForm.action = "NonageServlet?command=admin_qna_repsave";
+		theForm.action = contextPath + "/admin/qnas/qnaRepsave";
 		theForm.submit();
 	}
 </script>
@@ -39,7 +39,7 @@
 				<table id="orderList">
 					<tr>
 						<td colspan="2">
-							<img src="admin/images/opinionimg01.gif">
+							<img src="${contextPath }/admin/images/opinionimg01.gif">
 						</td>
 					</tr>
 					<tr>
