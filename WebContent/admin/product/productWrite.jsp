@@ -51,8 +51,8 @@
 			</tr>
 		</table>
 		
-		<input class="btn" type="button" value="등록" onClick="go_save()">
-		<input class="btn" type="button" value="취소" onClick="go_mov()">
+		<input class="btn" type="button" value="등록" onClick="go_save('${contextPath}')">
+		<input class="btn" type="button" value="취소" onClick="go_mov('${contextPath}')">
 	</form>
 </article>
 <%@ include file="/admin/footer.jsp"%>

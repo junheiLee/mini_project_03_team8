@@ -75,13 +75,13 @@
 			<tr>
 				<th>상품이미지</th>
 				<td colspan="5">
-					<img src="product_images/${productVO.image}" width="200pt"> <br> 
+					<img src="${contextPath }/product_images/${productVO.image}" width="200pt"> <br> 
 					<input type="file" name="image">
 				</td>
 			</tr>
 		</table>
-		<input class="btn" type="button" value="수정" onClick="go_mod_save('${tpage}','${productVO.pseq}')"> 
-		<input class="btn" type="button" value="취소" onClick="go_mov()">
+		<input class="btn" type="button" value="수정" onClick="go_mod_save('${tpage}','${productVO.pseq}', '${contextPath}')"> 
+		<input class="btn" type="button" value="취소" onClick="go_mov('${contextPath}')">
 	</form>
 </article>
 <%@ include file="/admin/footer.jsp"%>

@@ -22,7 +22,7 @@ function go_ab() // 판매가-원가=순매출을 replace해서 계산해 준다
 
 // 폼에 입력이 올바른지 판단한다.
 // productWrite.jsp에서 사용한다.
-function go_save() 
+function go_save(contextPath) 
 {
 	var theForm = document.frm;
 	
@@ -54,7 +54,7 @@ function go_save()
 		// 디비에 추가하기 위한 페이지인 product_save.jsp로 이동하되
 		// 입력받은 상품 코드를 쿼리 스트링 형태로 전달한다.
 		// 상품 코드로 폴더를 만들어 거기에 이미지 파일을 업로드한다.
-		theForm.action = "NonageServlet?command=admin_product_write";
+		theForm.action = contextPath + "/admin/items/write";
 		theForm.submit();
 	}
 }
@@ -64,58 +64,57 @@ function removeComma(input) // ,을 빼고 값을 다시 넣어준다.
 	return input.value.replace(/,/gi, "");
 }
 // productWrite.jsp에서 사용한다. 상품 리스트로 이동한다.
-function go_mov()
+function go_mov(contextPath)
 {
 	var theForm = document.frm;
-	theForm.action = "NonageServlet?command=admin_product_list";
+	theForm.action = contextPath + "/admin/items/list";
 	theForm.submit();
 }
 //projectList.jsp
-function go_search() {
+function go_search(contextPath) {
 	var theForm = document.frm;
-	theForm.action =  "NonageServlet?command=admin_product_list";
+	theForm.action =  contextPath + "/admin/items/list";
 	theForm.submit();
 }
 
-function go_total() {
+function go_total(contextPath) {
 	var theForm = document.frm;
 	theForm.key.value = "";
-	theForm.action =  "NonageServlet?command=admin_product_list";
+	theForm.action =  contextPath + "/admin/items/list";
 	theForm.submit();
 }
 
-function go_detail(tpage, pseq) {
+function go_detail(tpage, pseq, contextPath) {
 	var theForm = document.frm;
 	// 상품 상세 보기 페이지에서 다시 상품 리스트로 돌아왔을 경우 현재 페이지로
 	// 돌아올 수 있도록 하기 위해서 현재 페이지 번호를 쿼리 스트링으로 넘겨준다.
-	theForm.action =  "NonageServlet?command=admin_product_detail&tpage=" +
+	theForm.action =  contextPath + "/admin/items/detail?tpage=" +
 	                  tpage+"&pseq="+pseq;
 	
 	theForm.submit();
 }
 
-function go_wrt() {
+function go_wrt(contextPath) {
 	var theForm = document.frm;
-	theForm.action = "NonageServlet?command=admin_product_write_form";
+	theForm.action = contextPath + "/admin/items/writeForm";
 	theForm.submit();
 }
 // **************** productDetail.jsp
-function go_list(tpage) {
+function go_list(tpage, contextPath) {
 	var theForm = document.frm;
 	//상품 리스트로 이동하되 현재 페이지를 쿼리 스트링으로 넘긴다.
-	theForm.action = "NonageServlet?command=admin_product_list&tpage=" + tpage;
+	theForm.action = contextPath + "/admin/items/list?tpage=" + tpage;
 	theForm.submit();
 }
 // **************** productDetail.jsp
-function go_mod(tpage, pseq) {
+function go_mod(tpage, pseq, contextPath) {
 	var theForm = document.frm;
 	//현재 페이지를 쿼리 스트링으로 넘긴다.
-	theForm.action = "NonageServlet?command=admin_product_update_form&tpage=" + 
-		              tpage+"&pseq="+pseq;
+	theForm.action = contextPath + "/admin/items/updateForm?tpage=" + tpage+"&pseq="+pseq;
 	theForm.submit();
 }
 
-function go_mod_save(tpage, pseq) {
+function go_mod_save(tpage, pseq, contextPath) {
 	var theForm = document.frm;
 
 	if (theForm.kind.value == '') {
@@ -150,14 +149,14 @@ function go_mod_save(tpage, pseq) {
 			theForm.price3.value = removeComma(theForm.price3);
 			// [2] products 테이블의 상품 정보를 수정하는 처리를 하는 product_modsave.jsp 페이지로
 			// 이동하되 상품 코드를 전달해준다. 상품코드로 폴더를 생성해서 그곳에 이미지 파일을 업로드하기 때문이다.			
-			theForm.action = "NonageServlet?command=admin_product_update";
+			theForm.action = contextPath + "/admin/items/update";
 			theForm.submit();
 		}
 	}
 }
 
-function go_mod_mov(tpage, pseq) {
+function go_mod_mov(tpage, pseq, contextPath) {
 	var theForm = document.frm;
-	theForm.action = 'NonageServlet?command=admin_product_detail&tpage=' + tpage + "&pseq=" + pseq;
+	theForm.action = contextPath + "/admin/items/detail?tpage=" + tpage + "&pseq=" + pseq;
 	theForm.submit();
 }

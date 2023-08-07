@@ -39,16 +39,12 @@ public class ItemService {
 		return dao.listKindProduct(kind);
 	}
 	
-	/**
-	 * 
-	 * 
-	 */
 	public List<ItemVO> listItem(int tpage, String key){
 		return dao.listProduct(tpage, key);
 	}
 	
-	public String pageNumber(int tpage, String key) {
-		return dao.pageNumber(tpage, key);
+	public String pageNumber(int tpage, String key, String path) {
+		return dao.pageNumber(tpage, key, path);
 	}
 	
 	public ArrayList<ItemVO> listNewProduct() {
@@ -57,5 +53,17 @@ public class ItemService {
 	
 	public ArrayList<ItemVO> listBestProduct() {
 		return dao.listBestProduct();
+	}
+	
+	public void insertItem(ItemVO item) {
+		dao.insertProduct(item);
+	}
+	
+	public ItemVO getItem(String pseq) {
+		return dao.getProduct(pseq);
+	}
+	
+	public void updateItem(ItemVO item) {
+		dao.updateProduct(item);
 	}
 }
