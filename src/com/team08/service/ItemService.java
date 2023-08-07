@@ -50,4 +50,12 @@ public class ItemService {
 	public String pageNumber(int tpage, String key) {
 		return dao.pageNumber(tpage, key);
 	}
+	
+	public ArrayList<ItemVO> listNewProduct() {
+		return dao.listNewProduct();
+	}
+	
+	public ArrayList<ItemVO> listBestProduct() {
+		return dao.listBestProduct();
+	}
 }
