@@ -194,7 +194,7 @@ public class ItemDAO {
 	static int counts = 5; // 한 페이지에 나타낼 상품의 개수
 
 	// 페이지 이동을 위한 메소드
-	public String pageNumber(int tpage, String name) {
+	public String pageNumber(int tpage, String name, String path) {
 		String str = "";
 
 		int total_pages = totalRecord(name);
@@ -214,9 +214,9 @@ public class ItemDAO {
 			end_page = page_count;
 		}
 		if (start_page > view_rows) {
-			str += "<a href='NonageServlet?command=admin_product_list&tpage=1&key=" + name
+			str += "<a href='" + path + "/admin/items/list?tpage=1&key=" + name
 					+ "'>&lt;&lt;</a>&nbsp;&nbsp;";
-			str += "<a href='NonageServlet?command=admin_product_list&tpage=" + (start_page - 1);
+			str += "<a href='" + path + "/admin/items/list?tpage=" + (start_page - 1);
 			str += "&key=<%=product_name%>'>&lt;</a>&nbsp;&nbsp;";
 		}
 
@@ -224,15 +224,15 @@ public class ItemDAO {
 			if (i == tpage) {
 				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
 			} else {
-				str += "<a href='NonageServlet?command=admin_product_list&tpage=" + i + "&key=" + name + "'>[" + i
+				str += "<a href='" + path + "/admin/items/list?tpage=" + i + "&key=" + name + "'>[" + i
 						+ "]</a>&nbsp;&nbsp;";
 			}
 		}
 
 		if (page_count > end_page) {
-			str += "<a href='NonageServlet?command=admin_product_list&tpage=" + (end_page + 1) + "&key=" + name
+			str += "<a href='" + path + "/admin/items/list?tpage=" + (end_page + 1) + "&key=" + name
 					+ "'> &gt; </a>&nbsp;&nbsp;";
-			str += "<a href='NonageServlet?command=admin_product_list&tpage=" + page_count + "&key=" + name
+			str += "<a href='"+ path +"/admin/items/list?tpage=" + page_count + "&key=" + name
 					+ "'> &gt; &gt; </a>&nbsp;&nbsp;";
 		}
 		return str;

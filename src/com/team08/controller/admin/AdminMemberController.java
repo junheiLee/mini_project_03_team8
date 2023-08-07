@@ -52,7 +52,8 @@ public class AdminMemberController extends HttpServlet {
 			if (result == 1) {
 				HttpSession session = request.getSession();
 				session.setAttribute("workerId", workerId);
-				nextPage = "/admin/item/productList";
+				nextPage = "/admin/items/list";
+				System.out.println("admin/members/login.do");
 			} else if (result == 0) {
 				msg = "비밀번호를 확인하세요.";
 			} else if (result == -1) {

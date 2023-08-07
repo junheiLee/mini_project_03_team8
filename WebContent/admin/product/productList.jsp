@@ -2,16 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/admin/header.jsp"%>
 <%@ include file="/admin/sub_menu.jsp"%>
-
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <article>
 	<h1>상품리스트</h1>
 	<form name="frm" method="post">
 		<table>
 			<tr>
 				<td width="642">상품명 <input type="text" name="key"> 
-					<input class="btn" type="button" name="btn_search" value="검색" onClick="go_search()"> 
-					<input class="btn" type="button" name="btn_total" value="전체보기 " onClick="go_total()"> 
-					<input class="btn" type="button" name="btn_write" value="상품등록"  onClick="go_wrt()">
+					<input class="btn" type="button" name="btn_search" value="검색" onClick="go_search('${contextPath}')"> 
+					<input class="btn" type="button" name="btn_total" value="전체보기 " onClick="go_total('${contextPath}')"> 
+					<input class="btn" type="button" name="btn_write" value="상품등록"  onClick="go_wrt('${contextPath}')">
 				</td>
 			</tr>
 		</table>
@@ -36,7 +36,7 @@
 						<tr>
 							<td height="23" align="center">${productVO.pseq}</td>
 							<td style="text-align: left; padding-left: 50px; padding-right: 0px;">
-								<a href="#" onClick="go_detail('${tpage}', '${productVO.pseq}')">
+								<a href="#" onClick="go_detail('${tpage}', '${productVO.pseq}', '${contextPath }')">
 									${productVO.name} 
 								</a>
 							</td>
