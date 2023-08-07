@@ -9,9 +9,9 @@
       <form  method="post" name="formm">    
         <fieldset>
           <legend> Item detail Info</legend>  
-          <a href="items?pseq=${productVO.pseq}">         
+          <a href="${contextPath }/items?pseq=${productVO.pseq}">         
             <span style="float: left;">
-              <img  src="product_images/${productVO.image}"  />
+              <img  src="${contextPath }/product_images/${productVO.image}"  />
             </span>              
             <h2> ${productVO.name} </h2>  
           </a>    

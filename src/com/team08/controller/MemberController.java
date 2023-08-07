@@ -50,7 +50,7 @@ public class MemberController extends HttpServlet {
 			MemberVO loginUser = memberService.login(id, pwd);
 			if (loginUser != null) {
 				request.getSession().setAttribute("loginUser", loginUser);
-				nextPage = "/index.jsp";
+				nextPage = "/main";
 			} else {
 				nextPage = "/member/login_fail.jsp";
 			}
