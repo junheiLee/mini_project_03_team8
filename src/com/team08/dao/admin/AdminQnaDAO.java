@@ -24,7 +24,7 @@ public class AdminQnaDAO {
 			Context envContext = (Context) ctx.lookup("java:/comp/env");
 			dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
 		} catch (Exception e) {
-			System.out.println("MemberDAO() ERR : " + e.getMessage());
+			System.out.println("AdminQnaDAO() ERR : " + e.getMessage());
 		}
 	}
 	

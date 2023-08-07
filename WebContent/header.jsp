@@ -10,12 +10,12 @@
 <title>Nonage Shop</title>
 <link href="${contextPath }/css/shopping.css" rel="stylesheet">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="${contextPath }/member/member.js"></script>
-<script type="text/javascript" src="${contextPath }/mypage/mypage.js"></script>
-</head>
 <script>
 	var contextPath = "${pageContext.request.contextPath }";
 </script>
+<script type="text/javascript" src="${contextPath }/member/member.js"></script>
+<script type="text/javascript" src="${contextPath }/mypage/mypage.js"></script>
+</head>
 <body>
 	<div id="wrap">
 		<!--헤더파일 들어가는 곳 시작 -->
@@ -45,7 +45,7 @@
 						</c:otherwise>
 					</c:choose>
 					<li>/</li>
-					<li><a href="NonageServlet?command=cart_list">CART</a></li>
+					<li><a href="${contextPath }/carts/cartList">CART</a></li>
 					<li>/</li>
 					<li><a href="NonageServlet?command=mypage">MY PAGE</a></li>
 					<li>/</li>
