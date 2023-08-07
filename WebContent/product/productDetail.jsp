@@ -9,7 +9,7 @@
       <form  method="post" name="formm">    
         <fieldset>
           <legend> Item detail Info</legend>  
-          <a href="NonageServlet?command=product_detail&pseq=${productVO.pseq}">         
+          <a href="items?pseq=${productVO.pseq}">         
             <span style="float: left;">
               <img  src="product_images/${productVO.image}"  />
             </span>              

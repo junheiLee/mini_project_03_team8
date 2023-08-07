@@ -56,15 +56,15 @@
 
 			<nav id="top_menu">
 				<ul>
-					<li><a href="NonageServlet?command=catagory&kind=1">Heels</a>
+					<li><a href="${contextPath}/items?kind=1">Heels</a>
 					</li>
-					<li><a href="NonageServlet?command=catagory&kind=2">Boots</a>
+					<li><a href="${contextPath}/items?kind=2">Boots</a>
 					</li>
-					<li><a href="NonageServlet?command=catagory&kind=3">Sandals</a>
+					<li><a href="${contextPath}/items?kind=3">Sandals</a>
 					</li>
-					<li><a href="NonageServlet?command=catagory&kind=4">Sneakers</a>
+					<li><a href="${contextPath}/items?kind=4">Sneakers</a>
 					</li>
-					<li><a href="NonageServlet?command=catagory&kind=5">On
+					<li><a href="${contextPath}/items?kind=5">On
 							Sale</a></li>
 				</ul>
 			</nav>
