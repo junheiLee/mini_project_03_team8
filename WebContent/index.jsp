@@ -17,7 +17,7 @@
 		<c:forEach items="${newProductList }" var="productVO">
 			<div id="item">
 				<a
-					href="NonageServlet?command=product_detail&pseq=${productVO.pseq}">
+					href="items/pseq=${productVO.pseq}">
 					<img src="product_images/${productVO.image}" />
 					<h3>${productVO.name}</h3>
 					<p>${productVO.price2}</p>
@@ -32,7 +32,7 @@
 		<c:forEach items="${bestProductList}" var="productVO">
 			<div id="item">
 				<a
-					href="NonageServlet?command=product_detail&pseq=${productVO.pseq}">
+					href="items?pseq=${productVO.pseq}">
 					<img src="product_images/${productVO.image}" />
 					<h3>${productVO.name}</h3>
 					<p>${productVO.price2}</p>
