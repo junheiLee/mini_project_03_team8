@@ -22,7 +22,7 @@
 		<header>
 			<!--로고 들어가는 곳 시작--->
 			<div id="logo">
-				<a href="NonageServlet?command=index"> <img
+				<a href="${contextPath }/main"> <img
 					src="${contextPath }/images/logo.gif" width="180" height="100" alt="nonageshop">
 				</a>
 			</div>
@@ -49,7 +49,7 @@
 					<li>/</li>
 					<li><a href="NonageServlet?command=mypage">MY PAGE</a></li>
 					<li>/</li>
-					<li><a href="NonageServlet?command=qna_list">Q&amp;A(1:1)</a>
+					<li><a href="${contextPath }/qnas/qnaList">Q&amp;A(1:1)</a>
 					</li>
 				</ul>
 			</nav>
