@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 중복 체크</title>
-<link href="CSS/subpage.css" rel="stylesheet">
+<link href= "${contextPath }/CSS/subpage.css" rel="stylesheet">
 <style type="text/css">
 body{   
   background-color:#B96DB5;
@@ -39,7 +39,7 @@ function idok(){
   <h1>ID 중복확인</h1>
   <form method=post name=formm style="margin-right:0 "
 action="${contextPath }/members/id_check_form" >
-    User ID <input type=text name="id" value=""> 
+    User ID <input type=text name="id" value="${id}"> 
             <input type=submit value="검색" class="submit"><br>     
     <div style="margin-top: 20px">   
       <c:if test="${message == 1}">
