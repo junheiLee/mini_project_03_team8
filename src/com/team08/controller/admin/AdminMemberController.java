@@ -53,7 +53,6 @@ public class AdminMemberController extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("workerId", workerId);
 				nextPage = "/admin/items/list";
-				System.out.println("admin/members/login.do");
 			} else if (result == 0) {
 				msg = "비밀번호를 확인하세요.";
 			} else if (result == -1) {

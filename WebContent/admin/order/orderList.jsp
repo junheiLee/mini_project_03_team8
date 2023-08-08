@@ -19,9 +19,19 @@
 		if (count == 0) {
 			alert("주문처리할 항목을 선택해 주세요.");
 		} else {
-			document.frm.action = "NonageServlet?command=admin_order_save";
+			document.frm.action = contextPath + "/admin/orders/orderSave";
 			document.frm.submit();
 		}
+	}
+	
+	function go_search() {
+		if (document.frm.key.value == "") {
+			alert("주문자 이름을 입력해주세요.");
+			document.frm.key.focus();
+			return;
+		}
+		document.frm.action = contextPath + "/admin/orders/orderList?key=" + document.frm.key.value;
+		document.frm.submit();
 	}
 </script>
 <article>
