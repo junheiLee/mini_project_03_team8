@@ -8,6 +8,16 @@ function go_cart() {
   }
 }
 
+function go_order_now_insert() {
+	  if (document.formm.quantity.value == "") {
+	    alert("수량을 입력하여 주세요.");
+	    document.formm.quantity.focus();
+	  } else {
+	    document.formm.action = contextPath + "/orders/orderNowInsert";
+	    document.formm.submit();
+	  }
+	}
+
 function go_cart_delete() {
   var count = 0;
 
@@ -32,7 +42,7 @@ function go_cart_delete() {
 }
 
 function go_order_insert() {
-  document.formm.action = "NonageServlet?command=order_insert";
+  document.formm.action = contextPath + "/orders/orderInsert";
   document.formm.submit();
 }
 
