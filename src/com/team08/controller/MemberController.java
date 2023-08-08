@@ -41,6 +41,7 @@ public class MemberController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		String action = request.getPathInfo();
 		                                  
+		System.out.println("MemberController.doHandle() action=" + action);
 		if (action.equals("/loginForm.do")) {
 			nextPage = "/member/login.jsp"; 
 		} else if (action.equals("/login.do")) {

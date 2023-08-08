@@ -13,7 +13,7 @@
     <c:otherwise>
       <table id="cartList">
         <tr>
-          <th>상품명</th><th>수 량</th><th>가 격</th><th>주문일</th><th>삭 제</th>    
+          <th>상품명</th><th>수 량</th><th>가 격</th><th>주문일</th><th>상품 선택</th>    
         </tr>
         
         <c:forEach items="${cartList}"  var="cartVO">
@@ -48,11 +48,9 @@
     <div class="clear"></div>
      
     <div id="buttons" style="float: right">
-      <input type="button" value="쇼핑 계속하기" class="cancel"  
-onclick="location.href='${contextPath }/main'">    
+      <input type="button" value="쇼핑 계속하기" class="cancel" onclick="location.href='${contextPath }/main'">    
       <c:if test= "${cartList.size() != 0}">
-      <input type="button" value="주문하기"  class="submit"
-onclick="go_order_insert()">
+      <input type="button" value="주문하기"  class="submit" onclick="go_order_insert()">
       </c:if>
      </div>
     </form>

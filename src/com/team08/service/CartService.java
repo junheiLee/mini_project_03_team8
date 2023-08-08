@@ -24,4 +24,10 @@ public class CartService {
 	public void deleteCart(int cseq) {
 		cartDAO.deleteCart(cseq);
 	}
+	
+	public CartVO getCart(int cseq) {
+		CartVO cartVO = new CartVO();
+        cartVO.setCseq(cseq);
+        return cartVO;
+	}
 }
