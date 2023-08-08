@@ -48,8 +48,11 @@ public class AdminItemController extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	private void list(HttpServletRequest request) {
+	private void list(HttpServletRequest request) throws ServletException, IOException{
 		this.url = "/admin/product/productList.jsp";
+		
+		request.setCharacterEncoding("utf-8");
+		
 		String key = request.getParameter("key");
 		String tpage = request.getParameter("tpage");
 		if(key == null) {
