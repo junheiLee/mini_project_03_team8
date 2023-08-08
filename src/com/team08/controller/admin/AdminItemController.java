@@ -25,10 +25,8 @@ public class AdminItemController extends HttpServlet {
 	private String url = "";
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("/admin/items/ doGet 호출");
 		String path = request.getPathInfo();
 		
-		System.out.println("path = " + path);
 		if(path.equals("/list")) {
 			this.list(request);
 		} else if(path.equals("/writeForm")) {
@@ -77,7 +75,7 @@ public class AdminItemController extends HttpServlet {
 	
 	private void writeForm(HttpServletRequest request) {
 		this.url = "/admin/product/productWrite.jsp";
-		String kindList[] = {"Heels", "Boots", "Sandals", "Slipers", "Shcakers", "Sale" };
+		String kindList[] = {"Heels", "Boots", "Sandals", "Slipers", "Sneakers" };
 		
 		request.setAttribute("kindList", kindList);
 	}
@@ -124,7 +122,7 @@ public class AdminItemController extends HttpServlet {
 		if (request.getParameter("tpage") != null) {
 			tpage = request.getParameter("tpage");
 		}
-		String kindList[] = {"0", "Heels", "Boots", "Sandals", "Slipers", "Shcakers", "Sale" };
+		String kindList[] = {"0", "Heels", "Boots", "Sandals", "Slipers", "Sneakers" };
 		request.setAttribute("tpage", tpage);
 		int index = Integer.parseInt(item.getKind().trim());
 		request.setAttribute("kind", kindList[index]);
@@ -136,6 +134,7 @@ public class AdminItemController extends HttpServlet {
 		String pseq = request.getParameter("pseq").trim();
 
 		ItemVO item = service.getItem(pseq);
+		System.out.println("AdminItemController.updateForm() item.getUseyn = "+ item.getUseyn());
 
 		request.setAttribute("productVO", item);
 
@@ -145,7 +144,7 @@ public class AdminItemController extends HttpServlet {
 		}
 		request.setAttribute("tpage", tpage);
 
-		String kindList[] = { "Heels", "Boots", "Sandals", "Slipers", "Shcakers", "Sale" };
+		String kindList[] = { "Heels", "Boots", "Sandals", "Slipers", "Sneakers" };
 		request.setAttribute("kindList", kindList);
 		System.out.println("UPDATEfORM 호출ㄴ");
 	}
@@ -181,6 +180,10 @@ public class AdminItemController extends HttpServlet {
 		} else {
 			item.setImage(multi.getFilesystemName("image"));
 		}
+		item.setUseyn(multi.getParameter("useyn"));
+		System.out.println("AdminItemController.update() getParameter('useyn')=" + multi.getParameter("useyn"));
+		item.setBestyn(multi.getParameter("bestyn"));
+
 
 		service.updateItem(item);
 

@@ -62,10 +62,9 @@
 					</li>
 					<li><a href="${contextPath}/items?kind=3">Sandals</a>
 					</li>
-					<li><a href="${contextPath}/items?kind=4">Sneakers</a>
+					<li><a href="${contextPath}/items?kind=4">Slipers</a>
 					</li>
-					<li><a href="${contextPath}/items?kind=5">On
-							Sale</a></li>
+					<li><a href="${contextPath}/items?kind=5">Sneakers</a></li>
 				</ul>
 			</nav>
 			<div class="clear"></div>

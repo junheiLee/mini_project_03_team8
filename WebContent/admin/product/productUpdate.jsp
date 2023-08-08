@@ -59,7 +59,7 @@
 				<th>사용유무</th>
 				<td><c:choose>
 						<c:when test='${productVO.useyn=="y"}'>
-							<input type="checkbox" name="useyn" value="y" checked="checked">
+							<input type="checkbox" name="useyn" value="y" checked>
 						</c:when>
 						<c:otherwise>
 							<input type="checkbox" name="useyn" value="n">

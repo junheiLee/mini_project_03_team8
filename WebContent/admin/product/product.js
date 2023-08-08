@@ -138,7 +138,7 @@ function go_mod_save(tpage, pseq, contextPath) {
 			// useyns hidden 태그에 1을 지정한다.
 			if (theForm.useyn.checked == true) {
 				theForm.useyn.value = "y";
-			}
+			} 
 			if(theForm.bestyn.checked == true) {
 				theForm.bestyn.value = "y";
 			}
