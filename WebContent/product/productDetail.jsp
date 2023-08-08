@@ -24,7 +24,7 @@
         <div class="clear"></div>
         <div id="buttons">
           <input type="button" value="장바구니에 담기"   class="submit"    onclick="go_cart()"> 
-          <input type="button" value="즉시 구매"       class="submit"    onclick="go_order()"> 
+          <input type="button" value="즉시 구매"       class="submit"    onclick="go_order_now_insert()"> 
           <input type="reset"  value="취소"           class="cancel">
         </div>
       </form>  

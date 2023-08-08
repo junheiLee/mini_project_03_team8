@@ -47,7 +47,7 @@
 					<li>/</li>
 					<li><a href="${contextPath }/carts/cartList">CART</a></li>
 					<li>/</li>
-					<li><a href="NonageServlet?command=mypage">MY PAGE</a></li>
+					<li><a href="${contextPath }/orders/mypage">MY PAGE</a></li>
 					<li>/</li>
 					<li><a href="${contextPath }/qnas/qnaList">Q&amp;A(1:1)</a>
 					</li>
