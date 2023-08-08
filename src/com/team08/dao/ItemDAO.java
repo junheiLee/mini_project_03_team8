@@ -131,7 +131,7 @@ public class ItemDAO {
 
 	public ArrayList<ItemVO> listKindProduct(String kind) {
 		ArrayList<ItemVO> itemList = new ArrayList<ItemVO>();
-		String sql = "select * from product where kind=?";
+		String sql = "select * from product where kind=? and useyn like('y')";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
