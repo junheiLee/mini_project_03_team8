@@ -59,7 +59,7 @@ public class MemberController extends HttpServlet {
 			if (session != null) {
 				session.invalidate();
 			}
-			nextPage = "/index.jsp";
+			nextPage = "/main";
 		} else if (action.equals("/contract.do")) {
 			nextPage = "/member/contract.jsp";
 		} else if (action.equals("/joinForm.do")) {
@@ -71,7 +71,7 @@ public class MemberController extends HttpServlet {
 			memberVO.setName(request.getParameter("name"));
 			memberVO.setEmail(request.getParameter("email"));
 			memberVO.setZipNum(request.getParameter("zipNum"));
-			memberVO.setAddress(request.getParameter("addr1" + " " + request.getParameter("addr2")));
+			memberVO.setAddress(request.getParameter("addr1") + " " + request.getParameter("addr2"));
 			memberVO.setPhone(request.getParameter("phone"));
 			
 			int result = memberService.join(memberVO);

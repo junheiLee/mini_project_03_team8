@@ -90,51 +90,72 @@ public class OrderDAO {
 	}
 	
 	public int insertOrder(ArrayList<CartVO> cartList, String id) {
-		int maxOseq = 0;
-		try {
-			conn = dataFactory.getConnection();
-			String selectMaxOseq = "SELECT MAX(oseq) FROM orders";
-			pstmt = conn.prepareStatement(selectMaxOseq);
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				maxOseq = rs.getInt(1);
-			}
-			pstmt.close();
+	    int maxOseq = 0;
+	    Connection conn = null;  
+	    try {
+	        conn = dataFactory.getConnection();
+	        conn.setAutoCommit(false); // 트랜잭션 시작 
 
-			String insertOrder = "INSERT INTO orders (oseq, id) VALUES (orders_seq.nextval, ?)";
-			pstmt = conn.prepareStatement(insertOrder);
-			pstmt.setString(1, id);
-			pstmt.executeUpdate();
-			for (CartVO cartVO : cartList) {
-				insertOrderDetail(cartVO, maxOseq);
-			}
-			pstmt.close();
-			conn.close();
-		} catch (Exception e) {
-			System.out.println("insertOrder() ERR : " + e.getMessage());
-		} 
-		return maxOseq;
+	        String selectMaxOseq = "SELECT MAX(oseq) FROM orders";
+	        pstmt = conn.prepareStatement(selectMaxOseq);
+	        ResultSet rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            maxOseq = rs.getInt(1) + 1;
+	        }
+	        pstmt.close();
+
+	        String insertOrder = "INSERT INTO orders (oseq, id) VALUES (?, ?)";
+	        pstmt = conn.prepareStatement(insertOrder);
+	        pstmt.setInt(1, maxOseq);  
+	        pstmt.setString(2, id);
+	        pstmt.executeUpdate();
+	        pstmt.close();
+	        for (CartVO cartVO : cartList) {
+	            insertOrderDetail(conn, cartVO, maxOseq);  
+	        }
+	        conn.commit(); // 트랜잭션 종료
+	        conn.close();  
+	    } catch (Exception e) {
+	        if (conn != null) {
+	            try {
+	                conn.rollback();  
+	            } catch (SQLException ex) {
+	                ex.printStackTrace();
+	            }
+	        }
+	        System.out.println("insertOrder() ERR : " + e.getMessage());
+	    } finally {
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException ex) {
+	                ex.printStackTrace();
+	            }
+	        }
+	    }
+	    return maxOseq;
 	}
 
-	public void insertOrderDetail(CartVO cartVO, int maxOseq) {
-		try {
-			conn = dataFactory.getConnection();
-			String insertOrderDetail = "INSERT INTO order_detail (odseq, oseq, pseq, quantity) "
-					+ "VALUES (order_detail_seq.nextval, ?, ?, ?)";
-			pstmt = conn.prepareStatement(insertOrderDetail);
-			pstmt.setInt(1, maxOseq);
-			pstmt.setInt(2, cartVO.getPseq());
-			pstmt.setInt(3, cartVO.getQuantity());
-			pstmt.executeUpdate();
-			pstmt.close();
+	public void insertOrderDetail(Connection conn, CartVO cartVO, int maxOseq) {
+	    try {
+	        String insertOrderDetail = "INSERT INTO order_detail (odseq, oseq, pseq, quantity) "
+	                + "VALUES (order_detail_seq.nextval, ?, ?, ?)";
+	        pstmt = conn.prepareStatement(insertOrderDetail);
+	        pstmt.setInt(1, maxOseq);
+	        pstmt.setInt(2, cartVO.getPseq());
+	        pstmt.setInt(3, cartVO.getQuantity());
+	        pstmt.executeUpdate();
+	        pstmt.close();
 
-			String updateCartResult = "UPDATE cart SET result = 2 where cseq = ?";
-			pstmt = conn.prepareStatement(updateCartResult);
-			pstmt.setInt(1, cartVO.getCseq());
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
+	        String updateCartResult = "UPDATE cart SET result = 2 where cseq = ?";
+	        pstmt = conn.prepareStatement(updateCartResult);
+	        pstmt.setInt(1, cartVO.getCseq());
+	        pstmt.executeUpdate();
+	        pstmt.close();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } 
 	}
-	
+
 }
