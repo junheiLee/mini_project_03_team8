@@ -19,32 +19,35 @@ import com.team08.service.OrderService;
 
 /**
  * Servlet implementation class OrderController
- */                          
+ */
 @WebServlet("/orders/*")
 public class OrderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private OrderService orderService;
 	private CartService cartService;
-       
-    public OrderController() {
-    	orderService = new OrderService();
-    	cartService = new CartService();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public OrderController() {
+		orderService = new OrderService();
+		cartService = new CartService();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doHandle(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doHandle(request, response);
 	}
-	
-	private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	private void doHandle(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String nextPage = null;
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");
 		String action = request.getPathInfo();
-		
+
 		if (action.equals("/mypage")) {
 			nextPage = "/mypage/mypage.jsp";
 			HttpSession session = request.getSession();
@@ -117,8 +120,22 @@ public class OrderController extends HttpServlet {
 			if (loginUser == null) {
 				nextPage = "/members/loginForm.do";
 			} else {
-				ArrayList<CartVO> cartList = cartService.selectCarts(loginUser.getId());
-				int maxOseq = orderService.insertOrder(cartList, loginUser.getId());
+				int maxOseq = 0;
+
+				if (request.getParameterValues("cseq") != null) {
+					String[] values = request.getParameterValues("cseq");
+					ArrayList<CartVO> cartList = cartService.selectCarts(loginUser.getId());
+					ArrayList<CartVO> orderin = new ArrayList<>();
+
+					for (CartVO cart : cartList) {
+						for (String value : values) {
+							if (cart.getCseq() == Integer.parseInt(value)) {
+								orderin.add(cart);
+							}
+						}
+					}
+					maxOseq = orderService.insertOrder(orderin, loginUser.getId());
+				}
 				nextPage = "/orders/orderList?oseq=" + maxOseq;
 			}
 		} else if (action.equals("/orderNowInsert")) {
@@ -135,7 +152,7 @@ public class OrderController extends HttpServlet {
 				cartVO.setId(id);
 				cartVO.setPseq(pseq);
 				cartVO.setQuantity(quantity);
-				
+
 				ArrayList<CartVO> cartList = new ArrayList<CartVO>();
 				cartList.add(cartVO);
 				int maxOseq = orderService.insertOrder(cartList, loginUser.getId());
@@ -158,7 +175,7 @@ public class OrderController extends HttpServlet {
 				request.setAttribute("totalPrice", totalPrice);
 			}
 		}
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
 	}
