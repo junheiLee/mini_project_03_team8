@@ -116,7 +116,7 @@ public class MemberController extends HttpServlet {
 			response.getWriter().write(password);
 			return;
 		} 
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
 	}
