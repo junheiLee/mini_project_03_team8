@@ -14,18 +14,18 @@
 
 ### ItemController
 - product_detail: 상품 상세 페이지로 이동 (완료)
-- category: 상품 카테고리 정보를 처리 (완료)
+- category: 상품 카테고리 정보를 처리 (완료) - 미 사용 상품 표시 제외
 
 ### CartController
-- cart_insert: 장바구니에 상품을 추가
-- cart_list: 장바구니 목록을 조회
-- cart_delete: 장바구니에서 상품을 삭제
+- cart_insert: 장바구니에 상품을 추가 (완료)
+- cart_list: 장바구니 목록을 조회 (완료) - 체크 상품만 삭제 혹은 주문하도록 변경
+- cart_delete: 장바구니에서 상품을 삭제 (완료)
 
 ### OrderController
-- order_insert: 주문을 등록
-- order_detail: 주문 상세 정보를 조회
-- order_all: 모든 주문 정보를 조회
-- mypage: 진행중인 주문 목록
+- order_insert: 주문을 등록 (완료) - 즉시 구매 기능 오류 해결, 장바구니에서 구매 오류 해결
+- order_detail: 주문 상세 정보를 조회 (완료)
+- order_all: 모든 주문 정보를 조회 (완료)
+- mypage: 진행중인 주문 목록 (완료)
 
 ### QnaController
 - qna_list: Q&A 목록을 조회 (완료)
@@ -38,15 +38,15 @@
 - admin_login: 관리자 로그인 정보를 처리 (완료)
 - admin_member_list: 회원 목록을 조회 (완료)
 - admin_logout: 관리자 로그아웃을 처리 (완료)
-- admin_product_list: 상품 목록을 조회
-- admin_product_write_form: 상품 등록 페이지로 이동
-- admin_product_write: 상품 정보를 등록
-- admin_product_detail: 상품 상세 정보를 조회
-- admin_product_update_form: 상품 정보 수정 페이지로 이동
-- admin_product_update: 상품 정보를 수정
-- admin_order_list: 주문 목록을 조회
-- admin_order_save: 주문 정보를 저장
-- admin_qna_list: Q&A 목록을 조회 
-- admin_qna_detail: Q&A 상세 정보를 조회 
-- admin_qna_resave: Q&A 답변 정보를 저장
+- admin_product_list: 상품 목록을 조회 (완료) - 미 사용 상품 표시 추가
+- admin_product_write_form: 상품 등록 페이지로 이동 (완료)
+- admin_product_write: 상품 정보를 등록 (완료)
+- admin_product_detail: 상품 상세 정보를 조회 (완료)
+- admin_product_update_form: 상품 정보 수정 페이지로 이동 (완료)
+- admin_product_update: 상품 정보를 수정 (완료) - 미 사용 시, useyn table에 "n" 기입
+- admin_order_list: 주문 목록을 조회 (완료)
+- admin_order_save: 주문 정보를 저장 (완료)
+- admin_qna_list: Q&A 목록을 조회  (완료)
+- admin_qna_detail: Q&A 상세 정보를 조회  (완료)
+- admin_qna_resave: Q&A 답변 정보를 저장 (완료)
 
